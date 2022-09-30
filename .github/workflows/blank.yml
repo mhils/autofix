@@ -30,3 +30,16 @@ jobs:
           name: autofix-patch
           path: patch.diff
           retention-days: 1
+
+  commit:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: autofix-patch
+      - name: Display structure of downloaded files
+        run: ls -R
+      - uses: actions/download-artifact@v3
+        with:
+          name: autofix-unknown
