@@ -32,7 +32,8 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: autofix-patch
-          path: patch.diff
+          path: .github/patch.diff
+          if-no-files-found: error
           retention-days: 1
 
   commit:
