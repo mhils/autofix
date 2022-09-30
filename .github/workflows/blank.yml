@@ -51,5 +51,9 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: autofix-patch
-      - name: Display structure of downloaded files
-        run: ll .github/
+      - run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-username@users.noreply.github.com'
+          git apply .github/patch.diff
+          git commit -am "automated commit"
+          git push
