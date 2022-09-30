@@ -24,10 +24,12 @@ jobs:
       - uses: actions/checkout@v3
       - run: date > foo.txt
       - id: make-patch
+        name: "Make patch..."
         run: |
           git add --all
           git diff --staged --binary > .github/patch.diff
           if [ -s .github/patch.diff ]; then
+            echo "we need to patch"
             echo "::set-output name=needs-commit::true"
           else
             echo "nothing to do"
