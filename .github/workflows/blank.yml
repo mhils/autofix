@@ -48,6 +48,7 @@ jobs:
     if: needs.autofix.outputs.needs-commit
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
           name: autofix-patch
