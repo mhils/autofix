@@ -19,7 +19,7 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     outputs:
-      needs-commit: ${{ steps.step1.outputs.needs-commit }}
+      needs-commit: ${{ steps.make-patch.outputs.needs-commit }}
     steps:
       - uses: actions/checkout@v3
       - run: date > foo.txt
@@ -35,7 +35,7 @@ jobs:
             echo "nothing to do"
           fi
           
-      - if: steps.step1.outputs.needs-commit
+      - if: steps.make-patch.outputs.needs-commit
         uses: actions/upload-artifact@v3
         with:
           name: autofix-patch
