@@ -51,13 +51,10 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: autofix-patch
-          path: .github/patch.diff
       - run: ls -R 
-      - run: ls -R .github/
-      - run: ls -R .github/patch.diff
       - run: |
           git config --global user.name 'Your Name'
           git config --global user.email 'your-username@users.noreply.github.com'
-          git apply .github/patch.diff
+          git apply patch.diff
           git commit -am "automated commit"
           git push
