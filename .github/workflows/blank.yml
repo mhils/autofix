@@ -15,19 +15,24 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   autofix:
-    # The type of runner that the job will run on
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     outputs:
       needs-commit: ${{ steps.step1.outputs.needs-commit }}
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - run: date > foo.txt
-      - run: git add --all
-      - run: git diff --staged --binary > .github/patch.diff
-      - id: step1
-        run: echo "::set-output name=needs-commit::true"
+      - id: make-patch
+        run: |
+          git add --all
+          git diff --staged --binary > .github/patch.diff
+          if [ -s .github/patch.diff ]; then
+            echo "::set-output name=needs-commit::true"
+          else
+            echo "nothing to do"
+          fi
+          
       - if: steps.step1.outputs.needs-commit
         uses: actions/upload-artifact@v3
         with:
