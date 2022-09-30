@@ -29,8 +29,8 @@ jobs:
           git add --all
           git diff --staged --binary > .github/patch.diff
           if [ -s .github/patch.diff ]; then
-            echo "we need to patch"
             echo "::set-output name=needs-commit::true"
+            echo "we need to patch"
           else
             echo "nothing to do"
           fi
