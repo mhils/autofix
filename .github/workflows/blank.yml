@@ -10,8 +10,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  id-token: write
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -24,7 +22,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      
-      # Runs a set of commands using the runners shell
-      - run: |
-          curl -H "Authorization: bearer ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}" "${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}&audience=api://autofix"
+      - run: date > foo.txt
+      - run: git add --all
+      - run: git diff --staged --binary > patch.diff
+      - uses: actions/upload-artifact@v3
+        with:
+          name: autofix-patch
+          path: patch.diff
+          retention-days: 1
