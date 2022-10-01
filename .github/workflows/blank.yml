@@ -38,7 +38,7 @@ jobs:
       - if: steps.make-patch.outputs.needs-commit
         uses: actions/upload-artifact@v3
         with:
-          name: autofix-patch
+          name: autofixer.patch
           path: .github/patch.diff
           if-no-files-found: error
           retention-days: 1
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
-          name: autofix-patch
+          name: autofixer.patch
       - run: ls -R 
       - run: |
           git config --global user.name 'Your Name'
