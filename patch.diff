@@ -1,7 +1,7 @@
 diff --git a/foo.txt b/foo.txt
-new file mode 100644
-index 0000000..9559374
---- /dev/null
+index 9559374..7b39b93 100644
+--- a/foo.txt
 +++ b/foo.txt
-@@ -0,0 +1 @@
-+Fri Sep 30 13:19:52 UTC 2022
+@@ -1 +1 @@
+-Fri Sep 30 13:19:52 UTC 2022
++Sat Oct  1 14:01:02 UTC 2022
