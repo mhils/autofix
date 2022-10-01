@@ -4,9 +4,6 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -23,40 +20,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: date > foo.txt
-      - id: make-patch
-        name: "Make patch..."
-        run: |
-          git add --all
-          git diff --staged --binary > .github/patch.diff
-          if [ -s .github/patch.diff ]; then
-            echo "::set-output name=needs-commit::true"
-            echo "we need to patch"
-          else
-            echo "nothing to do"
-          fi
-          
-      - if: steps.make-patch.outputs.needs-commit
-        uses: actions/upload-artifact@v3
-        with:
-          name: autofixer.patch
-          path: .github/patch.diff
-          if-no-files-found: error
-          retention-days: 1
-
-  commit:
-    needs: autofix
-    if: needs.autofix.outputs.needs-commit
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name: autofixer.patch
-      - run: ls -R 
-      - run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-username@users.noreply.github.com'
-          git apply patch.diff
-          git add --all
-          git commit -am "automated commit"
-          git push
+      - uses: autofix-ci/action@main
