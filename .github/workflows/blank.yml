@@ -20,9 +20,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo foo > foo.txt
-      - uses: actions/upload-artifact@v3
-        with:
-          name: foo
-          path: ./foo.txt
-      - run: sleep 10
       - uses: autofix-ci/action@main
