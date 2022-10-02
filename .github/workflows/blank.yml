@@ -16,4 +16,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo foo > foo.txt
-      - uses: autofix-ci/action
+      - uses: autofix-ci/action@v1
