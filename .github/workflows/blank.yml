@@ -19,5 +19,5 @@ jobs:
       needs-commit: ${{ steps.make-patch.outputs.needs-commit }}
     steps:
       - uses: actions/checkout@v3
-      - run: date > foo.txt
+      - run: echo foo > foo.txt
       - uses: autofix-ci/action@main
