@@ -1,2 +1,1 @@
-barbaz
-xasd
+foo
