@@ -12,12 +12,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   autofix:
-    permissions:
-      contents: read
     runs-on: ubuntu-latest
-    outputs:
-      needs-commit: ${{ steps.make-patch.outputs.needs-commit }}
     steps:
       - uses: actions/checkout@v3
       - run: echo foo > foo.txt
-      - uses: autofix-ci/action@main
+      - uses: autofix-ci/action
