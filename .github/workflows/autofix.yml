@@ -1,19 +1,18 @@
-# This is a basic workflow to help you get started with Actions
+name: autofix.ci
 
-name: CI
-
-# Controls when the workflow will run
-on:
-  pull_request:
-    branches: [ "main" ]
-
-
+on: [ pull_request ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  autofix:
+  foo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: echo foo > foo.txt
+      - uses: autofix-ci/action@main
+  bar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo bar > bar.txt
       - uses: autofix-ci/action@main
