@@ -19,5 +19,3 @@ jobs:
 
       # or simpler:
       - run: gofmt -w -- **/*.go
-
-      - uses: autofix-ci/action@hash
