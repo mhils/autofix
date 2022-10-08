@@ -10,5 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: install-pinned/black@99a438031090fc8c36ea87ca9404d409c5b3b77f
+      - uses: install-pinned/black@main
       - run: black .
