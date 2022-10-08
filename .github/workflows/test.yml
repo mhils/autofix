@@ -10,15 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-go@v3
-        with:
-          go-version: '1.17'
-
-      - run: go install golang.org/x/tools/cmd/goimports@latest
-      - run: |
-          echo wat
-          goimports -w **/*.go
-          echo woo
-
-      # or simpler:
-      - run: gofmt -w -- **/*.go
+      - uses: install-pinned/black@99a438031090fc8c36ea87ca9404d409c5b3b77f
+      - run: black .
