@@ -1,0 +1,9 @@
+name: sleep
+
+on: [ push ]
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 60
