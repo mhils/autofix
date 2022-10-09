@@ -1,0 +1,9 @@
+name: veryfast
+
+on: [ push ]
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi
