@@ -6,4 +6,4 @@ jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 60
+      - uses: mhils/codecov-action-pinned@linux
