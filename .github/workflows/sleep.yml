@@ -6,4 +6,4 @@ jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: mhils/codecov-action-pinned@linux
+      - uses: mhils/codecov-action-pinned@main
