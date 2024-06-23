@@ -7,6 +7,6 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: echo foo > foo.txt
-      - uses: autofix-ci/action@main
+      - uses: autofix-ci/action@dev
