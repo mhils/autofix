@@ -9,4 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo foo > foo.txt
+      - run: chmod +x foo.txt
       - uses: autofix-ci/action@dev

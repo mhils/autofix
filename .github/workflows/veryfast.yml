@@ -1,9 +1,10 @@
 name: veryfast
 
-on: [ push ]
+on: [ push, pull_request ]
 
 jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
       - run: echo hi
+      - run: cat $GITHUB_EVENT_PATH
