@@ -1,13 +1,13 @@
 name: autofix.ci
 
-on: [ push, pull_request ]
+on: [ pull_request ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: echo foo > foo.txt
       - run: chmod +x foo.txt
       - uses: autofix-ci/action@dev
